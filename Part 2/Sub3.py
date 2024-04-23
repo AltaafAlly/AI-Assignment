@@ -11,7 +11,7 @@ def next_capture_states(fen, capture_square):
             board.pop()
     return sorted(states)
 
-if __name__ == "__main__":
-    fen = input()
-    capture_square = input()
-    print("\n".join(next_capture_states(fen, capture_square)))
+
+fen = input()
+capture_square = input()
+print("\n".join(next_capture_states(fen, capture_square)))
