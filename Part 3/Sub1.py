@@ -43,9 +43,6 @@ class TroutBot(Player):
 
         return None
 
-
-    # Implement other necessary methods for TroutBot
-
 def main():
     # Initialize TroutBot
     bot = TroutBot()
@@ -61,17 +58,8 @@ def main():
         # Call TroutBot to generate move
         bot.handle_game_start(Color(color), board, 'Opponent')
         move = bot.choose_move(board.legal_moves, seconds_left=60)  # Adjust time limit as needed
-
-        # Output move in the required format
-        if move:
-            print(move.uci())
-        else:
-            print("No valid move found.")
-
-    except Exception as e:
-        print("An error occurred:", e)
-        return
-
+        print(move.uci())
+        
     finally:
         # Close Stockfish engine
         bot.engine.quit()
