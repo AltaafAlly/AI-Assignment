@@ -1,6 +1,7 @@
 import random
 import chess.engine
 from reconchess import Player
+import os
 
 # Define the path to the Stockfish executable for the automarker
 #stockfish_path = '/opt/stockfish/stockfish'
@@ -8,7 +9,7 @@ from reconchess import Player
 # Define the path to the Stockfish executable
 stockfish_path = r'C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish'
 
-class MyAgent(Player):
+class ImprovedBot(Player):
     def __init__(self):
         self.board = None
         self.color = None
@@ -38,14 +39,61 @@ class MyAgent(Player):
                         new_states.add(board.fen())
                         board.pop()
         self.states = new_states
+    #THIS IS RANDOM SENSING
+    # def choose_sense(self, sense_actions, move_actions, seconds_left):
+    #     valid_actions = []
+    #     for square in sense_actions:
+    #         rank, file = chess.square_rank(square), chess.square_file(square)
+    #         if 0 < rank < 7 and 0 < file < 7:  # avoid edges
+    #             valid_actions.append(square)
+    #     return random.choice(valid_actions) if valid_actions else None
 
+    #THIS IS USING:
+    # Threat level, 
+    # proximity to center squares, 
+    # piece mobility, 
+    # pawn structure
     def choose_sense(self, sense_actions, move_actions, seconds_left):
-        valid_actions = []
+        # Calculate the score for each sense action based on various factors
+        action_scores = {}
         for square in sense_actions:
-            rank, file = chess.square_rank(square), chess.square_file(square)
-            if 0 < rank < 7 and 0 < file < 7:  # avoid edges
-                valid_actions.append(square)
-        return random.choice(valid_actions) if valid_actions else None
+            # Calculate neighboring squares
+            neighbors = []
+            file, rank = chess.square_file(square), chess.square_rank(square)
+            for file_offset in (-1, 0, 1):
+                for rank_offset in (-1, 0, 1):
+                    if file_offset == 0 and rank_offset == 0:
+                        continue
+                    neighbor_file, neighbor_rank = file + file_offset, rank + rank_offset
+                    if 0 <= neighbor_file < 8 and 0 <= neighbor_rank < 8:
+                        neighbors.append(chess.square(neighbor_file, neighbor_rank))
+
+            # Score based on threat level
+            threat_score = sum(1 for neighbor in neighbors if self.board.is_attacked_by(not self.color, neighbor))
+
+            # Score based on proximity to center squares
+            center_distance = min(abs(file - 3.5), abs(rank - 3.5))
+            center_score = 1 / (1 + center_distance)  # Higher score for squares closer to the center
+
+            # Score based on piece mobility
+            mobility_score = len(self.board.attackers(not self.color, square))  # Higher score for squares with more attackers
+
+            # Score based on pawn structure
+            pawn_score = 0
+            if self.board.piece_at(square) is not None and self.board.piece_at(square).piece_type == chess.PAWN:
+                pawn_score = sum(1 for neighbor in neighbors if self.board.piece_at(neighbor) is not None and
+                                self.board.piece_at(neighbor).piece_type == chess.PAWN)
+
+            # Total score for the action
+            total_score = threat_score + center_score + mobility_score + pawn_score
+            action_scores[square] = total_score
+
+        # Sort sense actions by score in descending order
+        sorted_actions = sorted(sense_actions, key=lambda x: action_scores.get(x, 0), reverse=True)
+
+        # Choose the square with the highest score
+        return sorted_actions[0] if sorted_actions else None
+
 
     def handle_sense_result(self, sense_result):
         new_states = set()
@@ -58,51 +106,6 @@ class MyAgent(Player):
             new_states.add(board.fen())
         self.states = new_states
 
-    # def choose_move(self, move_actions, seconds_left):
-    #     if len(self.states) > 10000:
-    #         self.states = random.sample(self.states, 10000)
-    #     moves = {}
-    #     for state in self.states:
-    #         board = chess.Board(state)
-    #         if board.is_check():
-    #             for move in move_actions:
-    #                 if move.to_square == board.king(not self.color):
-    #                     return move
-    #         self.engine.position(board)
-    #         move = self.engine.play(chess.engine.Limit(time=10/len(self.states)), game=object()).move
-    #         if move in move_actions:
-    #             if move not in moves:
-    #                 moves[move] = 0
-    #             moves[move] += 1
-    #     if moves:
-    #         return max(moves, key=lambda x: (moves[x], x.uci()))
-    #     else:
-    #         return random.choice(move_actions)
-    # def choose_move(self, move_actions, seconds_left):
-    #     # Ensure there are moves available
-    #     if not move_actions:
-    #         return None
-
-    #     # Convert the list of valid moves to algebraic notation
-    #     valid_moves_uci = [move.uci() for move in move_actions]
-
-    #     # Create a new board position
-    #     board = chess.Board()
-
-    #     # Set the current board position
-    #     for state in self.states:
-    #         board.set_fen(state)
-
-    #     # Use the Stockfish engine to select a move
-    #     result = self.engine.play(board, chess.engine.Limit(time=1))
-    #     best_move_uci = result.move.uci()
-
-    #     # Check if the move suggested by Stockfish is valid
-    #     if best_move_uci in valid_moves_uci:
-    #         return chess.Move.from_uci(best_move_uci)
-    #     else:
-    #         # If the suggested move is not valid, choose a random valid move
-    #         return random.choice(move_actions)
     def choose_move(self, move_actions, seconds_left):
         if not move_actions:
             return None
