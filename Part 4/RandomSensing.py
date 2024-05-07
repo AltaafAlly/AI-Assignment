@@ -50,41 +50,7 @@ class BaselineBot(Player):
         self.states = new_states
 
     def choose_move(self, move_actions, seconds_left):
-        # Ensure there are valid move actions
-        if not move_actions:
-            return None
-
-        # Calculate the time limit for Stockfish based on the number of boards
-        num_boards = len(self.states)
-        time_limit = 10 / max(1, num_boards)
-
-        # Cap the number of boards at 10,000 if it exceeds
-        if num_boards > 10000:
-            self.states = random.sample(self.states, 10000)
-            num_boards = 10000
-
-        # Perform majority voting to select the move
-        moves_count = {}
-        for state in self.states:
-            board = chess.Board(state)
-            if board.is_checkmate():
-                return None
-            if board.is_check():
-                for move in move_actions:
-                    if move.to_square == board.king(not self.color):
-                        return move
-            result = self.engine.play(board, chess.engine.Limit(time=time_limit))
-            move = result.move
-            if move in move_actions:  # Ensure the move is valid
-                if move not in moves_count:
-                    moves_count[move] = 0
-                moves_count[move] += 1
-
-        # Choose the move with the highest count
-        if moves_count:
-            return max(moves_count, key=moves_count.get)
-        else:
-            return None
+        return random.choice(move_actions + [None])
 
 
     def handle_move_result(self, requested_move, taken_move, captured_opponent_piece, capture_square):
