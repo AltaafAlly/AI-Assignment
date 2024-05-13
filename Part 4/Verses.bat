@@ -1,5 +1,8 @@
 @echo off
 
+REM THIS IS USED TO PLAY MULTIPLE GAMES BETWEEN TWO BOTS
+REM RESULTS GET SAVED IN THE game_results FOLDER
+
 REM Define number of games
 set num_games=10
 
