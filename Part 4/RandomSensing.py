@@ -262,7 +262,6 @@
 #     def handle_game_end(self, winner_color: Optional[Color], win_reason: Optional[WinReason], game_history: GameHistory):
 #         pass
 
-
 from reconchess import utilities
 from reconchess import Player
 import chess
@@ -273,6 +272,7 @@ import chess.engine
 import random
 from reconchess import *
 import os
+import time
 
 # Define the path to the Stockfish executable
 stockfish_path = (
@@ -284,7 +284,7 @@ stockfish_path = (
 
 #WORKING CODE DONT BREAK 
 
-class RandomSensingAgent(Player):
+class ImprovedAgent(Player):
     def __init__(self):
         self.board = None
         self.color = None
@@ -294,27 +294,36 @@ class RandomSensingAgent(Player):
             stockfish_path, setpgrp=True)
 
     def handle_game_start(self, color: Color, board: chess.Board, opponent_name: str):
-        self.board = board.copy() if board else None
+        self.board = board.copy()
         self.color = color
-        self.possible_states = {board.fen()} if board else set()
+        self.possible_states = {board.fen()} 
 
     def handle_opponent_move_result(
-        self, captured_my_piece: bool, capture_square: Optional[Square]
-    ):
-        self.my_piece_captured_square = capture_square
+    self, captured_my_piece: bool, capture_square: Optional[Square]
+):
         if captured_my_piece and capture_square is not None:
-            self.possible_states = {
-                state
-                for state in self.possible_states
-                if chess.Board(state).piece_at(capture_square) is not None
-            }
             for state in self.possible_states:
+                # Create a copy of the current board
                 board = chess.Board(state)
-                board.remove_piece_at(capture_square)
-                self.possible_states.remove(state)
-                self.possible_states.add(board.fen())
-        else:
-            self.possible_states = {state for state in self.possible_states}
+                # Check if there is a piece at the capture square
+                if board.piece_at(capture_square) is not None:
+                    # Remove the captured piece from the board
+                    board.remove_piece_at(capture_square)
+                    # Add the FEN representation of the modified board to possible states
+                    self.possible_states.add(board.fen())
+
+
+    def handle_sense_result(
+        self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]
+    ):
+        new_possible_states = set()
+        for square, piece in sense_result:
+            # Create a copy of the current board
+            new_board = self.board.copy()
+            # Set the piece at the sensed square
+            new_board.set_piece_at(square, piece)
+            # Add the FEN representation of the new board to possible states
+            self.possible_states.add(new_board.fen())
 
     def choose_sense(
         self,
@@ -325,98 +334,66 @@ class RandomSensingAgent(Player):
         # If no specific sensing strategy applies, choose a random sense action
         return random.choice(sense_actions)
 
-    def handle_sense_result(
-        self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]
-    ):
-        # Update the current board with the sensed information
-        for square, piece in sense_result:
-            self.board.set_piece_at(square, piece)
-
-        self.possible_states = {
-            state
-            for state in self.possible_states
-            if all(
-                chess.Board(state).piece_at(square) == piece
-                for square, piece in sense_result
-            )
-        }
-
     def choose_move(
         self, move_actions: List[chess.Move], seconds_left: float
     ) -> Optional[chess.Move]:
-        # Check if the king is under attack
-        king_square = self.board.king(self.color)
-        if king_square is not None:
-            attackers = self.board.attackers(not self.color, king_square)
-            if attackers:
-                # Check if the king can capture the attacker
-                for attacker_square in attackers:
-                    capturing_move = chess.Move(king_square, attacker_square)
-                    if capturing_move in move_actions:
-                        return capturing_move
+        # Check if there are any possible moves
+        if not move_actions:
+            return None
 
-        # Check if the opponent's king can be captured
-        enemy_king_square = self.board.king(not self.color)
-        if enemy_king_square:
-            enemy_king_attackers = self.board.attackers(
-                self.color, enemy_king_square)
-            if enemy_king_attackers:
-                attacker_square = enemy_king_attackers.pop()
-                capturing_move = chess.Move(attacker_square, enemy_king_square)
-                if capturing_move in move_actions:
-                    return capturing_move
-
-        # Use majority voting to select a move
         move_counts = {}
         num_boards = len(self.possible_states)
-        if num_boards > 0:
-            time_limit = min(10 / num_boards, 0.5)
-            possible_states_list = list(
-                self.possible_states)  # Convert set to list
-            for state in random.sample(possible_states_list, min(num_boards, 10000)):
-                board = chess.Board(state)
-                board.turn = self.color
-                board.clear_stack()
-                valid_moves = [
-                    move for move in move_actions if board.is_legal(move)]
-                if valid_moves:
-                    result = self.engine.play(
-                        board,
-                        chess.engine.Limit(time=time_limit),
-                        root_moves=valid_moves,
-                    )
-                    move = result.move
-                    if move is not None:
-                        move_counts[move] = move_counts.get(move, 0) + 1
+        time_limit = 10 / num_boards
+
+        # Set the maximum time for move selection
+        # max_time = 0.5  # Maximum time allowed in seconds
+
+        # start_time = time.time()
+
+        # Iterate through possible states and select moves
+        possible_states_list = list(self.possible_states)
+        for state in random.sample(possible_states_list, min(num_boards, 10000)):
+            board = chess.Board(state)
+            board.turn = self.color
+            board.clear_stack()
+            valid_moves = [move for move in move_actions if board.is_legal(move)]
+
+            # Check if time limit exceeded
+            # if time.time() - start_time > max_time:
+            #     # Return a random move
+            #     print("Time limit exceeded random moved played")
+            #     return random.choice(move_actions)
+
+            if valid_moves:
+                result = self.engine.play(
+                    board,
+                    chess.engine.Limit(time=time_limit),
+                    root_moves=valid_moves,
+                )
+                move = result.move
+                if move is not None:
+                    move_counts[move] = move_counts.get(move, 0) + 1
 
         if move_counts:
             best_move = max(move_counts, key=move_counts.get)
             return best_move
-
-        # If no valid move is found, return a random move from the available move_actions
-        if move_actions:
-            return random.choice(move_actions)
         else:
-            return None
+            # If no valid move is found, return a random move
+            return random.choice(move_actions)
 
-    def handle_move_result(
-        self,
-        requested_move: Optional[chess.Move],
-        taken_move: Optional[chess.Move],
-        captured_opponent_piece: bool,
-        capture_square: Optional[Square],
-    ):
-        if taken_move is not None:
-            self.possible_states = {
-                state
-                for state in self.possible_states
-                if chess.Board(state).is_legal(taken_move)
-            }
-            self.possible_states = {
-                chess.Board(state).push(taken_move).fen()
-                for state in self.possible_states
-                if chess.Board(state).push(taken_move) is not None
-            }
+
+    def handle_opponent_move_result(
+    self, captured_my_piece: bool, capture_square: Optional[Square]
+):
+        if captured_my_piece and capture_square is not None:
+            new_possible_states = set()
+            for state in self.possible_states:
+                board = chess.Board(state)
+                if board.piece_at(capture_square) is not None:
+                    board.remove_piece_at(capture_square)
+                    new_possible_states.add(board.fen())
+            self.possible_states.update(new_possible_states)
+
 
     def handle_game_end(
         self,

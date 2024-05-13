@@ -130,6 +130,7 @@ class ImprovedAgent(Player):
         # Use majority voting to select a move
         move_counts = {}
         num_boards = len(self.possible_states)
+        print(num_boards)
         if num_boards > 0:
             time_limit = min(10 / num_boards, 0.5)
             possible_states_list = list(
