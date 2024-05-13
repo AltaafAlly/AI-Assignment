@@ -1,3 +1,0 @@
-Game Over!
-Winner: white!
-Saving replay to RandomBot-ImprovedAgent-white-2024_05_09-00_34_39.json...
