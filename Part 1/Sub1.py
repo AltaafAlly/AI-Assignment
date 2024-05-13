@@ -1,5 +1,6 @@
 import chess
 
+# Create a board from the input string (Push test)
 def CreateBoard(board):
     return chess.Board(board)
 
