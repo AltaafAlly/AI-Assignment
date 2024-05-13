@@ -1,0 +1,39 @@
+MY BOTS:
+RandomSensing.py
+ImprovedAgentDraft.py
+
+BUILT IN BOTS:
+RandomBot.py
+TroutBot.py
+
+HOW TO RUN GAMES
+rc-bot-match <white bot> <black bot>
+rc-bot-match reconchess.bots.random_bot src/my_awesome_bot.py
+rc-bot-match reconchess.bots.random_bot reconchess.bots.random_bot
+rc-bot-match src/my_okay_bot.py src/my_awesome_bot.py
+
+HOW TO SEE REPLAYS 
+rc-replay <path to saved game history file>
+rc-replay crazy_game.json
+
+WHAT IS RECON CHESS AND HOW TO PLAY 
+Rules of Modified Chess
+
+•	Standard Chess rules apply, with exceptions.
+•	Objective: Capture the king, not checkmate.
+•	Check rules eliminated (king can be in check, etc.).
+•	Stalemate rules eliminated (optional automatic draws).
+•	Turn Phases:
+    ◦	Turn Start: Player notified of opponent's capture (if any).
+    ◦	Sense: Player reveals 3x3 window on board.
+    ◦	Move: Player makes move, or passes.
+•	Move Conditions:
+    ◦	Legal move.
+    ◦	Queen/Bishop/Rook blocked: Captures first obstructing piece.
+    ◦	Pawn blocked (2 squares): Moves 1 square (if legal).
+    ◦	Illegal move or pass: No changes to board.
+•	Move Results:
+    ◦	Capture: Player notified of capture square, not piece type.
+    ◦	King capture: Game ends, both players notified.
+•	Information: Players only know what's explicitly stated.
+•	Optional chess clock: Player knows own time, not opponent's.
