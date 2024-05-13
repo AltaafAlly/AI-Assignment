@@ -17,11 +17,12 @@ if exist "%results_folder%" (
 )
 
 REM Set the path to the Python scripts
-REM set MyBot=C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 4\RandomSensing.py
-set MyBot=C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 4\Improved Agent\ImprovedAgentDraft.py
+set MyBot=C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 4\RandomSensing.py
+REM set MyBot=C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 4\Improved Agent\ImprovedAgentDraft.py
 set TroutBot=C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 4\TroutBot.py
 REM "%TroutBot%"
+REM reconchess.bots.random_bot
 REM Loop to run multiple games
 for /l %%i in (1, 1, %num_games%) do (
-    rc-bot-match reconchess.bots.random_bot "%MyBot%"  > "%results_folder%\game%%i_result.txt"
+    rc-bot-match "%TroutBot%" "%MyBot%"  > "%results_folder%\game%%i_result.txt"
 )
