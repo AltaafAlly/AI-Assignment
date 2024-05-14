@@ -168,13 +168,13 @@
 #     # def choose_move(self, move_actions: List[chess.Move], seconds_left: float) -> Optional[chess.Move]:
 
 #     #     engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
-        
+
 #     #     if len(self.set_board_states) > 10000:
 #     #         self.set_board_states = random.sample(self.set_board_states, 10000)
 #     #     if self.set_board_states:
 #     #         time_limit = 10/len(self.set_board_states)
 #     #     else:
-#     #         time_limit = 0.1 
+#     #         time_limit = 0.1
 
 #     #     possible_moves = []
 
@@ -282,7 +282,7 @@ stockfish_path = (
 # stockfish_path = '/opt/stockfish/stockfish'
 
 
-#WORKING CODE DONT BREAK 
+# WORKING BASELINE CODE DONT BREAK
 
 class ImprovedAgent(Player):
     def __init__(self):
@@ -296,11 +296,11 @@ class ImprovedAgent(Player):
     def handle_game_start(self, color: Color, board: chess.Board, opponent_name: str):
         self.board = board.copy()
         self.color = color
-        self.possible_states = {board.fen()} 
+        self.possible_states = {board.fen()}
 
     def handle_opponent_move_result(
-    self, captured_my_piece: bool, capture_square: Optional[Square]
-):
+        self, captured_my_piece: bool, capture_square: Optional[Square]
+    ):
         if captured_my_piece and capture_square is not None:
             for state in self.possible_states:
                 # Create a copy of the current board
@@ -311,7 +311,6 @@ class ImprovedAgent(Player):
                     board.remove_piece_at(capture_square)
                     # Add the FEN representation of the modified board to possible states
                     self.possible_states.add(board.fen())
-
 
     def handle_sense_result(
         self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]
@@ -334,21 +333,14 @@ class ImprovedAgent(Player):
         # If no specific sensing strategy applies, choose a random sense action
         return random.choice(sense_actions)
 
+    #NORMAL WAY BUT ENGINE DIES 
     def choose_move(
         self, move_actions: List[chess.Move], seconds_left: float
     ) -> Optional[chess.Move]:
-        # Check if there are any possible moves
-        if not move_actions:
-            return None
-
         move_counts = {}
         num_boards = len(self.possible_states)
         time_limit = 10 / num_boards
-
-        # Set the maximum time for move selection
-        # max_time = 0.5  # Maximum time allowed in seconds
-
-        # start_time = time.time()
+        # print("number of boards:", num_boards, "time for move:", time_limit)
 
         # Iterate through possible states and select moves
         possible_states_list = list(self.possible_states)
@@ -357,34 +349,34 @@ class ImprovedAgent(Player):
             board.turn = self.color
             board.clear_stack()
             valid_moves = [move for move in move_actions if board.is_legal(move)]
+            # print("valid moves:", len(valid_moves))
 
-            # Check if time limit exceeded
-            # if time.time() - start_time > max_time:
-            #     # Return a random move
-            #     print("Time limit exceeded random moved played")
-            #     return random.choice(move_actions)
+            # if valid_moves:
+            # print("Start of loop")
+            for move in valid_moves:
+                # Play the move on a copy of the board
+                new_board = board.copy()
+                new_board.push(move)
 
-            if valid_moves:
-                result = self.engine.play(
-                    board,
-                    chess.engine.Limit(time=time_limit),
-                    root_moves=valid_moves,
-                )
-                move = result.move
-                if move is not None:
-                    move_counts[move] = move_counts.get(move, 0) + 1
+                # Use Stockfish to evaluate the move
+                evaluation = self.engine.analyse(new_board, chess.engine.Limit(time=time_limit))
+                score = evaluation['score'].relative.score(mate_score=10000)
+                move_counts[move] = move_counts.get(move, 0) + score
+            # print("End of loop")
 
         if move_counts:
+            # Select the move with the highest evaluation score
             best_move = max(move_counts, key=move_counts.get)
             return best_move
         else:
+            print("No valid move found")
             # If no valid move is found, return a random move
             return random.choice(move_actions)
 
 
     def handle_opponent_move_result(
-    self, captured_my_piece: bool, capture_square: Optional[Square]
-):
+        self, captured_my_piece: bool, capture_square: Optional[Square]
+    ):
         if captured_my_piece and capture_square is not None:
             new_possible_states = set()
             for state in self.possible_states:
@@ -393,7 +385,6 @@ class ImprovedAgent(Player):
                     board.remove_piece_at(capture_square)
                     new_possible_states.add(board.fen())
             self.possible_states.update(new_possible_states)
-
 
     def handle_game_end(
         self,
