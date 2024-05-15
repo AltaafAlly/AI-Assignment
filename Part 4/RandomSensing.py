@@ -10,7 +10,6 @@ from reconchess import *
 import os
 import time
 
-# Define the path to the Stockfish executable
 stockfish_path = (
     r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
 )
@@ -60,17 +59,18 @@ class ImprovedAgent(Player):
             # Add the FEN representation of the new board to possible states
             self.possible_states.add(new_board.fen())
 
-    # MAKE 3X3 AREA
-    def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> Optional[Square]:
-        # Exclude the edges of the board from sensing
-        valid_sense_actions = [square for square in sense_actions if square not in chess.SquareSet(chess.BB_RANK_1 | chess.BB_RANK_8 | chess.BB_FILE_A | chess.BB_FILE_H)]
-        
-        if valid_sense_actions:
-            # Choose a random square from the valid sense actions
-            return random.choice(valid_sense_actions)
-        else:
-            # If no valid sense actions are available, choose a random sense action
-            return random.choice(sense_actions)
+    def choose_sense(
+    self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float,
+    ) -> Optional[Square]:
+        while True:
+            # Choose a random sense action
+            sense_square = random.choice(sense_actions)
+
+            # Check if the 3x3 region around the sense square is fully on the board
+            rank, file = chess.square_rank(sense_square), chess.square_file(sense_square)
+            if 1 <= rank <= 6 and 1 <= file <= 6:
+                return sense_square
+
 
     #BEST VERSION OF CHOOSE_MOVE
     def choose_move(
