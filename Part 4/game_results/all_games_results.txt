@@ -1,0 +1,23 @@
+Match 1 
+White: Random_bot, Black: RandomSensingBot 
+Total game time: 53.69 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_16-22_46_22.json...
+ 
+Match 2 
+White: Random_bot, Black: RandomSensingBot 
+Total game time: 95.02 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_16-22_47_58.json...
+ 
+Match 3 
+White: Random_bot, Black: RandomSensingBot 
+Total game time: 81.76 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_16-22_49_20.json...
+ 
+Match 4 
+White: Random_bot, Black: RandomSensingBot 

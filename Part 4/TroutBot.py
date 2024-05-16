@@ -4,8 +4,8 @@ from reconchess import *
 import os
 
 
-# stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
-stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
+stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
+#stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
 
 class TroutBot(Player):
     """

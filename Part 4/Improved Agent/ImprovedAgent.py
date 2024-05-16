@@ -6,13 +6,13 @@ import os
 import time
 
 # Define the path to the Stockfish executable
-# stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
-stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
+stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
+#stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
 
 # Define the path to the Stockfish executable for the automarker
 # stockfish_path = '/opt/stockfish/stockfish'
 
-class RandomSensing(Player):
+class ImprovedAgent(Player):
     def __init__(self):
         self.board = None
         self.color = None
@@ -34,9 +34,9 @@ class RandomSensing(Player):
             
         # If the number of possible states exceeds 10000, randomly remove states
         if len(self.possible_states) > 10000:
-            self.possible_states = random.sample(self.possible_states, 10000)
+            self.possible_states = random.sample(list(self.possible_states), 10000)
 
-        print("handle_opponent_move_result(start): ", len(self.possible_states))
+        #print("handle_opponent_move_result(start): ", len(self.possible_states))
         # Update the possible states based on the opponent's move
         updated_states = set()
         for state in self.possible_states:
@@ -44,59 +44,73 @@ class RandomSensing(Player):
 
             # Check if the opponent's move is legal in the current state
             for move in board.legal_moves:
-                # if captured_my_piece and move.to_square == capture_square:
-                #     board.push(move)
-                #     updated_states.add(board.fen())
-                #     board.pop()
-                # elif not captured_my_piece and move.from_square == self.my_piece_captured_square:
                 board.push(move)
                 updated_states.add(board.fen())
                 board.pop()
 
         self.possible_states = updated_states
-        print("handle_opponent_move_result(end): ", len(self.possible_states))
+        #print("handle_opponent_move_result(end): ", len(self.possible_states))
             
     def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> Optional[Square]:
-        # If the number of possible states is low, sense randomly
-        if len(self.possible_states) <= 10:
-            return random.choice(sense_actions)
-    
-        # Initialize a dictionary to store the score for each sense action
-        sense_scores = {}
-    
-        # Iterate over each sense action
-        for sense_square in sense_actions:
-            # Initialize the score for the current sense action
-            score = 0
-    
-            # Iterate over each possible state
-            for state in self.possible_states:
-                board = chess.Board(state)
-    
-                # Check if there are any opponent pieces in the 3x3 region around the sense square
-                rank, file = chess.square_rank(sense_square), chess.square_file(sense_square)
-                for r in range(max(0, rank - 1), min(8, rank + 2)):
-                    for f in range(max(0, file - 1), min(8, file + 2)):
-                        square = chess.square(f, r)
-                        piece = board.piece_at(square)
-                        if piece and piece.color != self.color:
-                            score += 1
-    
-            # Store the score for the current sense action
-            sense_scores[sense_square] = score
-    
-        # Choose the sense action with the highest score
-        best_sense_square = max(sense_scores, key=sense_scores.get)
-        return best_sense_square
+        # Try to locate the enemy king
+        enemy_king_square = self.board.king(not self.color)
+        
+        if enemy_king_square:
+            # If the enemy king is found, sense the area around it
+            if enemy_king_square in sense_actions:
+                return enemy_king_square
+            rank, file = chess.square_rank(enemy_king_square), chess.square_file(enemy_king_square)
+            if (1 <= rank <= 6) and (1 <= file <= 6):
+                return enemy_king_square
+        
+        # Define the center squares of the board
+        center_squares = [
+            chess.E4, chess.E5, chess.D4, chess.D5,
+            chess.C3, chess.D3, chess.E3, chess.F3,
+            chess.C6, chess.D6, chess.E6, chess.F6
+        ]
+        
+        # Filter out the center squares that are not in the sense_actions
+        valid_center_squares = [square for square in center_squares if square in sense_actions]
+        
+        if valid_center_squares:
+            # If there are valid center squares, prioritize sensing them
+            return random.choice(valid_center_squares)
+        
+        # If no center squares are available, sense around recently captured squares
+        if self.my_piece_captured_square:
+            rank, file = chess.square_rank(self.my_piece_captured_square), chess.square_file(self.my_piece_captured_square)
+            sense_candidates = [chess.square(f, r) for f in range(file - 1, file + 2) for r in range(rank - 1, rank + 2) if chess.square(f, r) in sense_actions]
+            if sense_candidates:
+                return random.choice(sense_candidates)
+        
+        # Analyze possible states to determine high-probability squares for opponent pieces
+        piece_count = {}
+        for state in self.possible_states:
+            board = chess.Board(state)
+            for square in chess.SQUARES:
+                piece = board.piece_at(square)
+                if piece and piece.color != self.color:
+                    piece_count[square] = piece_count.get(square, 0) + 1
+        
+        # Prioritize sensing squares with high probability of opponent pieces
+        if piece_count:
+            high_prob_squares = sorted(piece_count, key=piece_count.get, reverse=True)
+            for square in high_prob_squares:
+                if square in sense_actions:
+                    return square
+        
+        # If no specific strategy applies, choose a random sense action
+        return random.choice(sense_actions)
 
     def handle_sense_result(self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]):
         # If the number of possible states exceeds 10000, randomly remove states
         if len(self.possible_states) > 10000:
-            self.possible_states = random.sample(self.possible_states, 10000)
+            self.possible_states = random.sample(list(self.possible_states), 10000)
         
         # Update the possible states based on the sense result   
         updated_states = set()
-        print("handle_sense_result(start): ", len(self.possible_states))
+        #print("handle_sense_result(start): ", len(self.possible_states))
         for state in self.possible_states:
             board = chess.Board(state)
 
@@ -111,7 +125,7 @@ class RandomSensing(Player):
                 updated_states.add(state)
 
         self.possible_states = updated_states
-        print("handle_sense_result(end): ", len(self.possible_states))
+        #print("handle_sense_result(end): ", len(self.possible_states))
 
         # Update our board with the sensed pieces
         for square, piece in sense_result:
@@ -127,14 +141,14 @@ class RandomSensing(Player):
                 attacker_square = enemy_king_attackers.pop()
                 return chess.Move(attacker_square, enemy_king_square)
 
-        print('choose_move(start):', len(self.possible_states))
+        # print('choose_move(start):', len(self.possible_states))
         # If there are no possible states, use the current board state
         if not self.possible_states:
             self.possible_states = [self.board.fen()]
 
         # If the number of possible states exceeds 10000, randomly remove states
         if len(self.possible_states) > 10000:
-            self.possible_states = random.sample(self.possible_states, 10000)
+            self.possible_states = random.sample(list(self.possible_states), 10000)
 
         # Determine the time limit for each board based on the number of possible states
         time_limit = 10 / len(self.possible_states)
@@ -142,21 +156,31 @@ class RandomSensing(Player):
         # Initialize a dictionary to store the best moves for each state
         best_moves = {}
 
-        try:
-            # Iterate over each possible state
-            for state in self.possible_states:
+        # print("number of states: ", len(self.possible_states))
+        # Iterate over each possible state
+        for state in self.possible_states:
+            try:
                 board = chess.Board(state)
                 board.turn = self.color
 
                 # Use Stockfish to determine the best move for the current state
                 result = self.engine.play(board, chess.engine.Limit(time=time_limit))
-                best_moves[state] = result.move
-        except chess.engine.EngineTerminatedError:
-            print('Stockfish Engine died')
-            self.engine.quit()
-            self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
-        except chess.engine.EngineError:
-            print('Stockfish Engine bad state at "{}"'.format(self.board.fen()))
+
+                # Check if result move is legal
+                if result.move in board.legal_moves:
+                    best_moves[state] = result.move
+                else:
+                    # Handle illegal move
+                    print(f"Illegal move suggested by engine: {result.move} in state {state}")
+                    # Optional: re-initialize the engine if it's consistently giving illegal moves
+                    self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
+
+            except chess.engine.EngineTerminatedError:
+                # print('Stockfish Engine died')
+                self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
+                continue
+            except chess.engine.EngineError:
+                print('Stockfish Engine bad state at "{}"'.format(self.board.fen()))
 
         # Perform majority voting to select the move
         move_counts = {}
@@ -183,11 +207,11 @@ class RandomSensing(Player):
             
         # If the number of possible states exceeds 10000, randomly remove states
         if len(self.possible_states) > 10000:
-            self.possible_states = random.sample(self.possible_states, 10000)
+            self.possible_states = random.sample(list(self.possible_states), 10000)
 
         # Update the possible states based on the move result
         updated_states = set()
-        print("handle_move_result(start): ", len(self.possible_states))
+        #print("handle_move_result(start): ", len(self.possible_states))
         for state in self.possible_states:
             board = chess.Board(state)
 
@@ -197,12 +221,13 @@ class RandomSensing(Player):
                 updated_states.add(board.fen())
             else:
                 # If the taken move is not legal, check if the requested move is legal
-                if requested_move in board.legal_moves:
+                if requested_move and requested_move in board.legal_moves:
+                    #print("Requested move was taken")
                     board.push(requested_move)
                     updated_states.add(board.fen())
 
         self.possible_states = updated_states
-        print("handle_move_result(end): ", len(self.possible_states))
+        #print("handle_move_result(end): ", len(self.possible_states))
 
     def handle_game_end(self, winner_color: Optional[Color], win_reason: Optional[WinReason], game_history: GameHistory):
         try:
