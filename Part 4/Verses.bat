@@ -34,14 +34,14 @@ REM THIS IS USED TO PLAY MULTIPLE GAMES BETWEEN TWO BOTS
 REM RESULTS GET SAVED IN THE game_results FOLDER
 
 REM Define number of games
-set num_games=6
+set num_games=10
 
 REM Set the path to the game results folder
 set results_folder=C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 4\game_results
 
 REM Define the consolidated results file
-set consolidated_results=%results_folder%\all_games_results.txt
-
+@REM set consolidated_results=%results_folder%\Results_RandomBot_vs_ImprovedBot.txt
+set consolidated_results=%results_folder%\Results_RandomBot_vs_RandomSensing.txt
 REM Delete existing files in the game results folder, if it exists
 if exist "%results_folder%" (
     del /q "%results_folder%\*"

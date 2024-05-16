@@ -1,4 +1,0 @@
-Total game time: 95.02 seconds
-Game Over!
-Winner: black!
-Saving replay to RandomBot-RandomSensing-black-2024_05_16-22_47_58.json...
