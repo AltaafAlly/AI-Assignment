@@ -44,6 +44,11 @@ class RandomSensing(Player):
 
             # Check if the opponent's move is legal in the current state
             for move in board.legal_moves:
+                # if captured_my_piece and move.to_square == capture_square:
+                #     board.push(move)
+                #     updated_states.add(board.fen())
+                #     board.pop()
+                # elif not captured_my_piece and move.from_square == self.my_piece_captured_square:
                 board.push(move)
                 updated_states.add(board.fen())
                 board.pop()
@@ -51,16 +56,38 @@ class RandomSensing(Player):
         self.possible_states = updated_states
         print("handle_opponent_move_result(end): ", len(self.possible_states))
             
-    def choose_sense(
-    self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float,) -> Optional[Square]:
-        while True:
-            # Choose a random sense action
-            sense_square = random.choice(sense_actions)
-
-            # Check if the 3x3 region around the sense square is fully on the board
-            rank, file = chess.square_rank(sense_square), chess.square_file(sense_square)
-            if 1 <= rank <= 6 and 1 <= file <= 6:
-                return sense_square
+    def choose_sense(self, sense_actions: List[Square], move_actions: List[chess.Move], seconds_left: float) -> Optional[Square]:
+        # If the number of possible states is low, sense randomly
+        if len(self.possible_states) <= 10:
+            return random.choice(sense_actions)
+    
+        # Initialize a dictionary to store the score for each sense action
+        sense_scores = {}
+    
+        # Iterate over each sense action
+        for sense_square in sense_actions:
+            # Initialize the score for the current sense action
+            score = 0
+    
+            # Iterate over each possible state
+            for state in self.possible_states:
+                board = chess.Board(state)
+    
+                # Check if there are any opponent pieces in the 3x3 region around the sense square
+                rank, file = chess.square_rank(sense_square), chess.square_file(sense_square)
+                for r in range(max(0, rank - 1), min(8, rank + 2)):
+                    for f in range(max(0, file - 1), min(8, file + 2)):
+                        square = chess.square(f, r)
+                        piece = board.piece_at(square)
+                        if piece and piece.color != self.color:
+                            score += 1
+    
+            # Store the score for the current sense action
+            sense_scores[sense_square] = score
+    
+        # Choose the sense action with the highest score
+        best_sense_square = max(sense_scores, key=sense_scores.get)
+        return best_sense_square
 
     def handle_sense_result(self, sense_result: List[Tuple[Square, Optional[chess.Piece]]]):
         # If the number of possible states exceeds 10000, randomly remove states
@@ -115,23 +142,21 @@ class RandomSensing(Player):
         # Initialize a dictionary to store the best moves for each state
         best_moves = {}
 
-        # Iterate over each possible state
-        for state in self.possible_states:
-            try:
+        try:
+            # Iterate over each possible state
+            for state in self.possible_states:
                 board = chess.Board(state)
                 board.turn = self.color
-            
+
                 # Use Stockfish to determine the best move for the current state
                 result = self.engine.play(board, chess.engine.Limit(time=time_limit))
                 best_moves[state] = result.move
-            
-            except chess.engine.EngineTerminatedError:
-                print('Stockfish Engine died')
-                self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
-                continue
-            except chess.engine.EngineError:
-                print('Stockfish Engine bad state at "{}"'.format(self.board.fen()))
-        
+        except chess.engine.EngineTerminatedError:
+            print('Stockfish Engine died')
+            self.engine.quit()
+            self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
+        except chess.engine.EngineError:
+            print('Stockfish Engine bad state at "{}"'.format(self.board.fen()))
 
         # Perform majority voting to select the move
         move_counts = {}
