@@ -6,8 +6,8 @@ import os
 import time
 
 # Define the path to the Stockfish executable
-stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
-#stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
+# stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
+stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
 
 # Define the path to the Stockfish executable for the automarker
 # stockfish_path = '/opt/stockfish/stockfish'
@@ -164,7 +164,17 @@ class RandomSensing(Player):
         # If a move was executed, apply it to our board
         if taken_move is not None:
             self.board.push(taken_move)
-            
+
+            # If an opponent's piece was captured, update the possible states
+            if captured_opponent_piece:
+                updated_states = set()
+                for state in self.possible_states:
+                    board = chess.Board(state)
+                    if board.piece_at(capture_square) is not None:
+                        board.remove_piece_at(capture_square)
+                        updated_states.add(board.fen())
+                self.possible_states = updated_states
+
         # If the number of possible states exceeds 10000, randomly remove states
         if len(self.possible_states) > 10000:
             self.possible_states = random.sample(list(self.possible_states), 10000)
