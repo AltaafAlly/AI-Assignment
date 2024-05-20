@@ -1,0 +1,260 @@
+Match 1: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 1 minutes 53 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 1 minutes 52 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_07_38.json...
+
+Stderr:
+
+
+Match 2: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 2 minutes 49 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 2 minutes 48 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_10_27.json...
+
+Stderr:
+
+
+Match 3: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 2 minutes 0 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 59 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_12_28.json...
+
+Stderr:
+
+
+Match 4: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 1 minutes 50 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 1 minutes 49 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_14_18.json...
+
+Stderr:
+
+
+Match 5: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 1 minutes 12 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 1 minutes 10 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_15_30.json...
+
+Stderr:
+
+
+Match 6: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 3 minutes 15 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 3 minutes 14 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_18_46.json...
+
+Stderr:
+
+
+Match 7: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 4 minutes 15 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 4 minutes 14 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_23_01.json...
+
+Stderr:
+
+
+Match 8: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 0 minutes 31 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 30 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_23_32.json...
+
+Stderr:
+
+
+Match 9: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 1 minutes 15 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 14 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_24_47.json...
+
+Stderr:
+
+
+Match 10: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 2 minutes 29 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 2 minutes 28 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_27_17.json...
+
+Stderr:
+
+
+Match 11: ImprovedAgent (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 15 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 14 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_28_32.json...
+
+Stderr:
+
+
+Match 12: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 0 minutes 16 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 15 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_28_48.json...
+
+Stderr:
+
+
+Match 13: ImprovedAgent (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 40 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 39 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_29_29.json...
+
+Stderr:
+
+
+Match 14: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 2 minutes 43 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 2 minutes 42 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_32_13.json...
+
+Stderr:
+
+
+Match 15: ImprovedAgent (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 1 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 0 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_33_14.json...
+
+Stderr:
+
+
+Match 16: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 3 minutes 57 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 3 minutes 56 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_37_12.json...
+
+Stderr:
+
+
+Match 17: ImprovedAgent (White) vs RandomSensing (Black)
+Game Duration: 3 minutes 35 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 3 minutes 33 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_40_46.json...
+
+Stderr:
+
+
+Match 18: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 2 minutes 24 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 2 minutes 23 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_43_11.json...
+
+Stderr:
+
+
+Match 19: ImprovedAgent (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 23 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 22 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomSensing-white-2024_05_20-17_43_34.json...
+
+Stderr:
+
+
+Match 20: RandomSensing (White) vs ImprovedAgent (Black)
+Game Duration: 2 minutes 38 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 2 minutes 37 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomSensing-black-2024_05_20-17_46_13.json...
+
+Stderr:
+
+

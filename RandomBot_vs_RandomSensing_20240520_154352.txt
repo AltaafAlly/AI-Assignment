@@ -1,0 +1,260 @@
+Match 1: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 21 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 1 minutes 21 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_45_13.json...
+
+Stderr:
+
+
+Match 2: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 42 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 41 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_45_56.json...
+
+Stderr:
+
+
+Match 3: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 9 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 8 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_46_05.json...
+
+Stderr:
+
+
+Match 4: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 24 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 24 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomBot-RandomSensing-white-2024_05_20-15_46_30.json...
+
+Stderr:
+
+
+Match 5: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 20 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 19 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_46_50.json...
+
+Stderr:
+
+
+Match 6: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 18 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 18 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_47_09.json...
+
+Stderr:
+
+
+Match 7: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 10 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 9 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomBot-RandomSensing-white-2024_05_20-15_48_19.json...
+
+Stderr:
+
+
+Match 8: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 4 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 3 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomBot-RandomSensing-white-2024_05_20-15_49_23.json...
+
+Stderr:
+
+
+Match 9: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 39 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 38 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomBot-RandomSensing-white-2024_05_20-15_50_03.json...
+
+Stderr:
+
+
+Match 10: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 18 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 17 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_50_21.json...
+
+Stderr:
+
+
+Match 11: RandomSensing (White) vs RandomBot (Black)
+Game Duration: 0 minutes 14 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 14 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomBot-white-2024_05_20-15_50_36.json...
+
+Stderr:
+
+
+Match 12: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 8 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 7 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_50_44.json...
+
+Stderr:
+
+
+Match 13: RandomSensing (White) vs RandomBot (Black)
+Game Duration: 0 minutes 26 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 25 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomBot-black-2024_05_20-15_51_11.json...
+
+Stderr:
+
+
+Match 14: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 10 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 9 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomBot-RandomSensing-white-2024_05_20-15_51_21.json...
+
+Stderr:
+
+
+Match 15: RandomSensing (White) vs RandomBot (Black)
+Game Duration: 1 minutes 7 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 1 minutes 6 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomBot-black-2024_05_20-15_52_29.json...
+
+Stderr:
+
+
+Match 16: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 8 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 8 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_52_38.json...
+
+Stderr:
+
+
+Match 17: RandomSensing (White) vs RandomBot (Black)
+Game Duration: 0 minutes 54 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 53 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-RandomBot-white-2024_05_20-15_53_33.json...
+
+Stderr:
+
+
+Match 18: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 35 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 35 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomBot-RandomSensing-black-2024_05_20-15_54_09.json...
+
+Stderr:
+
+
+Match 19: RandomSensing (White) vs RandomBot (Black)
+Game Duration: 0 minutes 24 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 24 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-RandomBot-black-2024_05_20-15_54_33.json...
+
+Stderr:
+
+
+Match 20: RandomBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 33 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 32 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomBot-RandomSensing-white-2024_05_20-15_55_07.json...
+
+Stderr:
+
+

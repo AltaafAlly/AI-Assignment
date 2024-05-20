@@ -1,5 +1,6 @@
 import random
 from reconchess import *
+from multiprocessing import TimeoutError
 import os
 import chess.engine
 import datetime
@@ -10,8 +11,11 @@ class RandomSensing(Player):
 		self.color = None
 		self.move_no = 0
 		self.possible_boards = {}
+		self.opponent_move_results = []
 		self.sense_results = []
+		self.my_move_results = []
 		self.checkpoints = []
+		self.won = False
 		self.move_recovery = 0
 
 		self.stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
@@ -162,6 +166,8 @@ class RandomSensing(Player):
 	def handle_opponent_move_result(self, captured_my_piece: bool, capture_square: Optional[Square]):
 		# print("handle_opponent_move_result")
 		self.move_recovery = 0
+		self.won = False
+		self.opponent_move_results.append((captured_my_piece, capture_square))
 		if self.move_no != 0 or self.color == chess.BLACK:
 			self.possible_boards = self.advance_boards(captured_my_piece, capture_square, self.possible_boards)
  
@@ -285,6 +291,13 @@ class RandomSensing(Player):
 
 	# PAY ATTENTION HERE!!!!!!!!!!!!!!!!!
 	def handle_no_valid_moves(self, move_actions, seconds_left):
+		# print("No valid moves found")
+		# if self.checkpoints and self.checkpoints[-1][0] != 0:
+		# 	print("\tRefreshing state stack")
+		# 	self.refresh_state_stack()
+		# 	print("\tChoosing new move")
+		# 	self.move_recovery += 1
+		# 	return self.choose_move(move_actions, seconds_left)
 		return random.choice(move_actions) if move_actions else None
 
 	def refresh_state_stack(self):
@@ -299,6 +312,7 @@ class RandomSensing(Player):
 		for move in mates:
 			if self.is_valid_move(move):
 				# print(f"Mate!!! {move}")
+				self.won = True
 				return move
 
 		for move, _ in sorted(checks, key=lambda x: x[1], reverse=True):
@@ -331,6 +345,7 @@ class RandomSensing(Player):
 	def handle_move_result(self, requested_move: Optional[chess.Move], taken_move: Optional[chess.Move],
 						   captured_opponent_piece: bool, capture_square: Optional[Square]):
 		# print("handle_move_result")
+		self.my_move_results.append((requested_move, taken_move, captured_opponent_piece, capture_square))
 		self.update_potential_boards(requested_move, taken_move, captured_opponent_piece, capture_square)
 		self.move_no += 1
 		# self.print_move_result_info()

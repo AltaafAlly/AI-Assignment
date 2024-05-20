@@ -4,8 +4,8 @@ from reconchess import *
 import os
 
 
-stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
-#stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
+# stockfish_path = r"C:\Users\altaa\Documents\GitHub\AI-Assignment\Part 3\stockfish\stockfish"
+stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
 
 class TroutBot(Player):
     """
@@ -20,7 +20,7 @@ class TroutBot(Player):
         self.my_piece_captured_square = None
 
         # initialize the stockfish engine
-        self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True)
+        self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True, timeout=None)
 
     def handle_game_start(self, color: Color, board: chess.Board, opponent_name: str):
         self.board = board
@@ -72,6 +72,7 @@ class TroutBot(Player):
             return result.move
         except chess.engine.EngineTerminatedError:
             print('Stockfish Engine died')
+            self.engine = chess.engine.SimpleEngine.popen_uci(stockfish_path, setpgrp=True, timeout=None)
         except chess.engine.EngineError:
             print('Stockfish Engine bad state at "{}"'.format(self.board.fen()))
 

@@ -1,0 +1,240 @@
+Match 1: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 10 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_40_00.json...
+
+Stderr:
+
+
+Match 2: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 12 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_40_13.json...
+
+Stderr:
+
+
+Match 3: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 18 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_40_32.json...
+
+Stderr:
+
+
+Match 4: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 15 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_40_47.json...
+
+Stderr:
+
+
+Match 5: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 12 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_41_00.json...
+
+Stderr:
+
+
+Match 6: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 13 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_41_13.json...
+
+Stderr:
+
+
+Match 7: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 14 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_41_27.json...
+
+Stderr:
+
+
+Match 8: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 7 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_41_35.json...
+
+Stderr:
+
+
+Match 9: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 8 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_41_44.json...
+
+Stderr:
+
+
+Match 10: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 17 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_42_01.json...
+
+Stderr:
+
+
+Match 11: TroutBot (White) vs RandomBot (Black)
+Game Duration: 0 minutes 15 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomBot-white-2024_05_20-19_42_17.json...
+
+Stderr:
+
+
+Match 12: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 15 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_42_32.json...
+
+Stderr:
+
+
+Match 13: TroutBot (White) vs RandomBot (Black)
+Game Duration: 0 minutes 22 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomBot-white-2024_05_20-19_42_54.json...
+
+Stderr:
+
+
+Match 14: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 14 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_43_09.json...
+
+Stderr:
+
+
+Match 15: TroutBot (White) vs RandomBot (Black)
+Game Duration: 0 minutes 10 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomBot-white-2024_05_20-19_43_19.json...
+
+Stderr:
+
+
+Match 16: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 6 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_43_26.json...
+
+Stderr:
+
+
+Match 17: TroutBot (White) vs RandomBot (Black)
+Game Duration: 0 minutes 10 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomBot-white-2024_05_20-19_43_36.json...
+
+Stderr:
+
+
+Match 18: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 13 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_43_50.json...
+
+Stderr:
+
+
+Match 19: TroutBot (White) vs RandomBot (Black)
+Game Duration: 0 minutes 11 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomBot-white-2024_05_20-19_44_01.json...
+
+Stderr:
+
+
+Match 20: RandomBot (White) vs TroutBot (Black)
+Game Duration: 0 minutes 16 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Over!
+Winner: black!
+Saving replay to RandomBot-TroutBot-black-2024_05_20-19_44_18.json...
+
+Stderr:
+
+

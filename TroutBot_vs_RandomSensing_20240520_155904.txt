@@ -1,0 +1,260 @@
+Match 1: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 21 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 20 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-15_59_25.json...
+
+Stderr:
+
+
+Match 2: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 7 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 6 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_00_32.json...
+
+Stderr:
+
+
+Match 3: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 37 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 36 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_01_10.json...
+
+Stderr:
+
+
+Match 4: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 26 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 25 seconds
+Game Over!
+Winner: black!
+Saving replay to TroutBot-RandomSensing-black-2024_05_20-16_01_36.json...
+
+Stderr:
+
+
+Match 5: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 28 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 27 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_02_05.json...
+
+Stderr:
+
+
+Match 6: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 25 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 24 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_02_30.json...
+
+Stderr:
+
+
+Match 7: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 8 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 7 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_02_39.json...
+
+Stderr:
+
+
+Match 8: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 7 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 1 minutes 6 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_03_46.json...
+
+Stderr:
+
+
+Match 9: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 3 minutes 31 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 3 minutes 30 seconds
+Game Over!
+Winner: black!
+Saving replay to TroutBot-RandomSensing-black-2024_05_20-16_07_18.json...
+
+Stderr:
+
+
+Match 10: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 20 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 19 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_07_39.json...
+
+Stderr:
+
+
+Match 11: RandomSensing (White) vs TroutBot (Black)
+Game Duration: 0 minutes 16 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 15 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-TroutBot-white-2024_05_20-16_07_55.json...
+
+Stderr:
+
+
+Match 12: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 14 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 1 minutes 13 seconds
+Game Over!
+Winner: black!
+Saving replay to TroutBot-RandomSensing-black-2024_05_20-16_09_09.json...
+
+Stderr:
+
+
+Match 13: RandomSensing (White) vs TroutBot (Black)
+Game Duration: 0 minutes 8 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 7 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-TroutBot-white-2024_05_20-16_09_18.json...
+
+Stderr:
+
+
+Match 14: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 1 minutes 0 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 59 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_10_18.json...
+
+Stderr:
+
+
+Match 15: RandomSensing (White) vs TroutBot (Black)
+Game Duration: 0 minutes 7 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 6 seconds
+Game Over!
+Winner: white!
+Saving replay to RandomSensing-TroutBot-white-2024_05_20-16_10_25.json...
+
+Stderr:
+
+
+Match 16: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 30 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 29 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_10_56.json...
+
+Stderr:
+
+
+Match 17: RandomSensing (White) vs TroutBot (Black)
+Game Duration: 0 minutes 37 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 35 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-TroutBot-black-2024_05_20-16_11_32.json...
+
+Stderr:
+
+
+Match 18: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 29 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 28 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_12_02.json...
+
+Stderr:
+
+
+Match 19: RandomSensing (White) vs TroutBot (Black)
+Game Duration: 0 minutes 36 seconds
+Game Status: Completed
+Winner: Black
+Stdout:
+Game Duration: 0 minutes 35 seconds
+Game Over!
+Winner: black!
+Saving replay to RandomSensing-TroutBot-black-2024_05_20-16_12_39.json...
+
+Stderr:
+
+
+Match 20: TroutBot (White) vs RandomSensing (Black)
+Game Duration: 0 minutes 31 seconds
+Game Status: Completed
+Winner: White
+Stdout:
+Game Duration: 0 minutes 30 seconds
+Game Over!
+Winner: white!
+Saving replay to TroutBot-RandomSensing-white-2024_05_20-16_13_10.json...
+
+Stderr:
+
+

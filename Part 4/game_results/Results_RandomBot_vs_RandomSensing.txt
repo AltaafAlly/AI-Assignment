@@ -1,2 +1,0 @@
-Match 1 
-White: Random_bot, Black: RandomSensingBot 
