@@ -13,8 +13,8 @@ class RandomSensing(Player):
 		self.sense_results = []
 		self.checkpoints = []
 		self.move_recovery = 0
-
-		self.stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
+		self.stockfish_path = '/opt/stockfish/stockfish'
+		#self.stockfish_path = r'D:\\Wits\\Honours\\AI\\AI-Assignment\\Part 3\\stockfish\\stockfish.exe'
 		if not os.path.exists(self.stockfish_path):
 			raise ValueError('No stockfish executable found at "{}"'.format(self.stockfish_path))
 
